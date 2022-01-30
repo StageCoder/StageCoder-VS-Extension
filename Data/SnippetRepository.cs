@@ -45,7 +45,7 @@ namespace StageCoder.Data
         public static SettingsStore Settings { get; private set; }
         private static ShellSettingsManager SettingsManagerInstance { get; set; }
         private static readonly AsyncLazy<ShellSettingsManager> SettingsManager = new AsyncLazy<ShellSettingsManager>(GetSettingsManagerAsync, ThreadHelper.JoinableTaskFactory);
-        public async Task LoadSnippets()
+        public async Task LoadSnippetsAsync()
         {
 
             SettingsManagerInstance = await SettingsManager.GetValueAsync();

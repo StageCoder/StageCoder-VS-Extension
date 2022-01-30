@@ -83,7 +83,7 @@ namespace StageCoder
         /// <param name="package">Owner package, not null.</param>
         public static async Task InitializeAsync(AsyncPackage package)
         {
-            await SnippetRepository.Instance.LoadSnippets();
+            await SnippetRepository.Instance.LoadSnippetsAsync();
             // Switch to the main thread - the call to AddCommand in TypeCommand's constructor requires
             // the UI thread.
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync(package.DisposalToken);

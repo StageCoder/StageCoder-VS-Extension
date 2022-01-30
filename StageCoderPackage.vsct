@@ -1,23 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-
-  <!--  This is the file that defines the actual layout and type of the commands.
-        It is divided in different sections (e.g. command definition, command
-        placement, ...), with each defining a specific set of properties.
-        See the comment before each section for more details about how to
-        use it. -->
-
-  <!--  The VSCT compiler (the tool that translates this file into the binary
-        format that VisualStudio will consume) has the ability to run a preprocessor
-        on the vsct file; this preprocessor is (usually) the C++ preprocessor, so
-        it is possible to define includes and macros with the same syntax used
-        in C++ files. Using this ability of the compiler here, we include some files
-        defining some of the constants that we will use inside the file. -->
-
-  <!--This is the file that defines the IDs for all the commands exposed by VisualStudio. -->
   <Extern href="stdidcmd.h" />
-
-  <!--This header contains the command ids for the menus provided by the shell. -->
   <Extern href="vsshlids.h" />
 
   <!--The Commands section is where commands, menus, and menu groups are defined.
@@ -37,7 +20,11 @@
       <Group guid="guidStageCoderPackageCmdSet" id="MyMenuGroup" priority="0x0600">
         <Parent guid="guidStageCoderPackageCmdSet" id="TopLevelMenu" />
       </Group>
+      <Group guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="MyGroupForCommands" />
+      
     </Groups>
+    
+    
 
     <!--Buttons section. -->
     <!--This section defines the elements the user can interact with, like a menu command or a button
@@ -52,7 +39,7 @@
           If you do not want an image next to your command, remove the Icon node /> -->
       <Button guid="guidStageCoderPackageCmdSet" id="StageCoder.TypeCommandId" priority="0x0100" type="Button">
         <Parent guid="guidStageCoderPackageCmdSet" id="MyMenuGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="Type" />
         <CommandFlag>AllowParams</CommandFlag>
         <Strings>
           <ButtonText>Type code</ButtonText>
@@ -60,7 +47,7 @@
       </Button>
       <Button guid="guidStageCoderPackageCmdSet" id="StageCoder.ReloadSnippetsId" priority="0x0100" type="Button">
         <Parent guid="guidStageCoderPackageCmdSet" id="MyMenuGroup" />
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="Reload" />
         <CommandFlag>AllowParams</CommandFlag>
         <Strings>
           <ButtonText>Reload snippets</ButtonText>
@@ -69,12 +56,21 @@
       <Button guid="guidStageCoderPackageCmdSet" id="StageCoder.ReplaceCommandId" priority="0x0200" type="Button">
         <Parent guid="guidStageCoderPackageCmdSet" id="MyMenuGroup" />
         <CommandFlag>AllowParams</CommandFlag>
-        <Icon guid="guidImages" id="bmpPic1" />
+        <Icon guid="guidImages" id="Replace" />
         <Strings>
           <ButtonText>Replace code</ButtonText>
         </Strings>
       </Button>
+
+    <Button guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="StageCoder.CreateSnippetCommandId" priority="0x0190" type="Button">
+      <CommandFlag>AllowParams</CommandFlag>
+      <Icon guid="guidImages" id="Snippet" />
+      <Strings>
+        <ButtonText>Create Snippet</ButtonText>
+      </Strings>
+    </Button>
     </Buttons>
+
 
     <!--The bitmaps section is used to define the bitmaps that are used for the commands.-->
     <Bitmaps>
@@ -83,11 +79,26 @@
             bitmap strip containing the bitmaps and then there are the numeric ids of the elements used
             inside a button definition. An important aspect of this declaration is that the element id
             must be the actual index (1-based) of the bitmap inside the bitmap strip. -->
-      <Bitmap guid="guidImages" href="Resources\TypeCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+      <Bitmap guid="guidImages" href="Resources\Icons.png" usedList="Snippet, Replace, Type, Reload"/>
     </Bitmaps>
   </Commands>
 
+  <CommandPlacements>
 
+    <!-- Placement for group. The parent of a group is a menu, context menu or toolbar. 
+           The priority sets the position of the group compared to the priority of other existing groups in the menu.    
+      -->
+    <CommandPlacement guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="MyGroupForCommands" priority="0xFFFF">
+      <!-- The parent of the group will be the code window context menu -->
+      <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_CODEWIN"/>
+    </CommandPlacement>
+
+    <!-- Placement for command. The parent of a command is always a group, never a menu, context menu or toolbar. -->
+    <CommandPlacement guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="StageCoder.CreateSnippetCommandId" priority="0x0001" >
+      <Parent guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="MyGroupForCommands"/>
+    </CommandPlacement>
+  </CommandPlacements>
+  
   <KeyBindings>
     <KeyBinding guid="guidStageCoderPackageCmdSet" id="StageCoder.TypeCommandId" key1="VK_TAB" key2="VK_TAB" mod1="Control" mod2="Control" editor="guidVSStd97" />
   </KeyBindings>
@@ -101,18 +112,22 @@
     <GuidSymbol name="guidStageCoderPackageCmdSet" value="{49ba9bf5-beb2-4eb0-a635-4890158aa62a}">
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="StageCoder.TypeCommandId" value="0x0100" />
+      
       <IDSymbol name="StageCoder.ReplaceCommandId" value="0x0200" />
       <IDSymbol name="TopLevelMenu" value="0x1021" />
       <IDSymbol name="StageCoder.ReloadSnippetsId" value="0x0256" />
     </GuidSymbol>
 
+    <GuidSymbol name="guidVSPackageCommandCodeWindowContextMenuCmdSet" value="{0c1acc31-15ac-417c-86b2-eefdc669e8bf}">
+      <IDSymbol name="MyGroupForCommands" value="0x1020" />
+
+      <IDSymbol name="StageCoder.CreateSnippetCommandId" value="0x0190" />
+    </GuidSymbol>
     <GuidSymbol name="guidImages" value="{d5ade1f1-25ed-4791-aa9a-9f56179b4230}">
-      <IDSymbol name="bmpPic1" value="1" />
-      <IDSymbol name="bmpPic2" value="2" />
-      <IDSymbol name="bmpPicSearch" value="3" />
-      <IDSymbol name="bmpPicX" value="4" />
-      <IDSymbol name="bmpPicArrows" value="5" />
-      <IDSymbol name="bmpPicStrikethrough" value="6" />
+      <IDSymbol name="Snippet" value="1" />
+      <IDSymbol name="Replace" value="2" />
+      <IDSymbol name="Type" value="3" />
+      <IDSymbol name="Reload" value="4" />
     </GuidSymbol>
 
 

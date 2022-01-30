@@ -52,6 +52,7 @@ namespace StageCoder
             await TypeCommand.InitializeAsync(this);
             await ReloadSnippetsCommand.InitializeAsync(this);
             await ReplaceCommand.InitializeAsync(this);
+            await CreateSnippetCommand.InitializeAsync(this);
         }
 
    

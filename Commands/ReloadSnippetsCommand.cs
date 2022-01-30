@@ -89,7 +89,7 @@ namespace StageCoder
         /// <param name="e">Event args.</param>
         private async void Execute(object sender, EventArgs e)
         {
-            await SnippetRepository.Instance.LoadSnippets();
+            await SnippetRepository.Instance.LoadSnippetsAsync();
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
             string message = "Snippets has been reloaded";
             string title = "Reload Snippets";
