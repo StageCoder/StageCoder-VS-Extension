@@ -50,8 +50,10 @@ namespace StageCoder.Data
 
             SettingsManagerInstance = await SettingsManager.GetValueAsync();
             Settings = SettingsManagerInstance.GetReadOnlySettingsStore(SettingsScope.Configuration);
+
             var userSettings = SettingsManagerInstance.GetReadOnlySettingsStore(SettingsScope.UserSettings);
-            var mydocspath = userSettings.GetString(@"\", "VisualStudioLocation");
+            var mydocspath = userSettings.GetString(@"\", "VisualStudioLocation", Environment.GetEnvironmentVariable("VisualStudioDir")?? @"%USERPROFILE%\Documents\Visual Studio 2022");
+            Environment.SetEnvironmentVariable("MyDocs", mydocspath);
 
             List<string> snippetPaths = new List<string>();
             var settingpaths = Settings.GetSubCollectionNames(@"Languages\CodeExpansions\");
@@ -69,8 +71,7 @@ namespace StageCoder.Data
                         }
                         else
                         {
-                            var pathtoadd = p;
-                            pathtoadd = pathtoadd.Replace("%MyDocs%", mydocspath);
+                            var pathtoadd = Environment.ExpandEnvironmentVariables(p);
                             snippetPaths.Add(pathtoadd);
                         }
                     }
@@ -80,7 +81,7 @@ namespace StageCoder.Data
 
             //Add Solution folder
             var dte = GetCurrentDTE();
-            if (dte != null && dte.Solution!=null && dte.Solution.FullName!=null)
+            if (dte != null && dte.Solution!=null && dte.Solution.FullName!=null && !string.IsNullOrEmpty(dte.Solution.FullName))
             {
                 var solutionpath=System.IO.Path.GetDirectoryName(dte.Solution.FullName) + @"\Snippets";
                 if (Directory.Exists(solutionpath))
@@ -96,17 +97,19 @@ namespace StageCoder.Data
 
             foreach (var path in snippetPaths)
             {
-                
-                var snippetsfiles = Directory.GetFiles(path, "*.snippet");
-                foreach (var snippetfile in snippetsfiles)
-                {
-                    try
+                if (Directory.Exists(Environment.ExpandEnvironmentVariables(path)))
+                { 
+                    var snippetsfiles = Directory.GetFiles(Environment.ExpandEnvironmentVariables(path), "*.snippet");
+                    foreach (var snippetfile in snippetsfiles)
                     {
-                        XmlSerializer serializer = new XmlSerializer(typeof(CodeSnippets));
-                        CodeSnippets cs = (CodeSnippets)serializer.Deserialize(new XmlTextReader(snippetfile));
-                        Snippets.Add(cs);
+                        try
+                        {
+                            XmlSerializer serializer = new XmlSerializer(typeof(CodeSnippets));
+                            CodeSnippets cs = (CodeSnippets)serializer.Deserialize(new XmlTextReader(snippetfile));
+                            Snippets.Add(cs);
+                        }
+                        catch { }
                     }
-                    catch { }
                 }
             }
         }

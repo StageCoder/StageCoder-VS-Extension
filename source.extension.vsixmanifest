@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" ?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="StageCoder.1b552efe-29bf-40cd-bd16-47e49bdaadca" Version="2.1" Language="en-US" Publisher="Jimmy Engström" />
+        <Identity Id="StageCoder.1b552efe-29bf-40cd-bd16-47e49bdaadca" Version="2.3" Language="en-US" Publisher="Jimmy Engström" />
         <DisplayName>StageCoder</DisplayName>
         <Description xml:space="preserve">Project that will type out snippets</Description>
         <MoreInfo>https://github.com/StageCoder</MoreInfo>
@@ -9,6 +9,12 @@
     </Metadata>
     <Installation>
         <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[17.0,18.0)">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Pro">
+            <ProductArchitecture>amd64</ProductArchitecture>
+        </InstallationTarget>
+        <InstallationTarget Version="[17.0,18.0)" Id="Microsoft.VisualStudio.Enterprise">
             <ProductArchitecture>amd64</ProductArchitecture>
         </InstallationTarget>
     </Installation>
