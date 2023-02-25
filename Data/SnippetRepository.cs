@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -47,7 +48,6 @@ namespace StageCoder.Data
         private static readonly AsyncLazy<ShellSettingsManager> SettingsManager = new AsyncLazy<ShellSettingsManager>(GetSettingsManagerAsync, ThreadHelper.JoinableTaskFactory);
         public async Task LoadSnippetsAsync()
         {
-
             SettingsManagerInstance = await SettingsManager.GetValueAsync();
             Settings = SettingsManagerInstance.GetReadOnlySettingsStore(SettingsScope.Configuration);
 
@@ -91,9 +91,6 @@ namespace StageCoder.Data
             }
             //Get all Snippets
             Snippets.Clear();
-
-            
-
 
             foreach (var path in snippetPaths)
             {
