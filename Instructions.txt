@@ -1,0 +1,14 @@
+This extension makes it possible to type out a snippet, character by character, by pressing any buttons.
+This is the perfect extension for people showing code on stage, in a classroom, or in a workshop.
+
+
+Steps:
+1. Select some code
+2. Right-click and select Create snippet
+3. Name the snippet
+4. Now type the name of the snippet in a comment in the code //Snippetname (most comment types work)
+5. Make sure the cursor is on the same line as the comment Press CTRL + TAB + TAB
+The Extension now takes over and you can press any button (except TAB) to type one character at a time.
+6. To exit the extension, press TAB.
+
+The snippets are saved in a folder called "Snippets" in the solution folder.
