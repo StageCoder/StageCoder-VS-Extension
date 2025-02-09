@@ -61,7 +61,14 @@
           <ButtonText>Replace code</ButtonText>
         </Strings>
       </Button>
-
+      <Button guid="guidStageCoderPackageCmdSet" id="StageCoder.BlurrerCommandId" priority="0x0500" type="Button">
+        <Parent guid="guidStageCoderPackageCmdSet" id="MyMenuGroup" />
+        <CommandFlag>AllowParams</CommandFlag>
+        <Strings>
+          <ButtonText>Toggle Code Highlight</ButtonText>
+        </Strings>
+      </Button>
+      
     <Button guid="guidVSPackageCommandCodeWindowContextMenuCmdSet" id="StageCoder.CreateSnippetCommandId" priority="0x0190" type="Button">
       <CommandFlag>AllowParams</CommandFlag>
       <Icon guid="guidImages" id="Snippet" />
@@ -116,6 +123,7 @@
       <IDSymbol name="StageCoder.ReplaceCommandId" value="0x0200" />
       <IDSymbol name="TopLevelMenu" value="0x1021" />
       <IDSymbol name="StageCoder.ReloadSnippetsId" value="0x0256" />
+      <IDSymbol name="StageCoder.BlurrerCommandId" value="0x0257" />
     </GuidSymbol>
 
     <GuidSymbol name="guidVSPackageCommandCodeWindowContextMenuCmdSet" value="{0c1acc31-15ac-417c-86b2-eefdc669e8bf}">
@@ -128,6 +136,7 @@
       <IDSymbol name="Replace" value="2" />
       <IDSymbol name="Type" value="3" />
       <IDSymbol name="Reload" value="4" />
+      <IDSymbol name="Blurrer" value="5" />
     </GuidSymbol>
 
 

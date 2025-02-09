@@ -27,6 +27,7 @@ namespace StageCoder
     [PackageRegistration(UseManagedResourcesOnly = true, AllowsBackgroundLoading = true)]
     [Guid(StageCoderPackage.PackageGuidString)]
     [ProvideMenuResource("Menus.ctmenu", 1)]
+    [ProvideOptionPage(typeof(Settings.OptionsProvider.GeneralOptions), "Stage Coder", "General", 0, 0, true, SupportsProfiles = true)]
     public sealed class StageCoderPackage : AsyncPackage
     {
         /// <summary>
@@ -53,6 +54,7 @@ namespace StageCoder
             await ReloadSnippetsCommand.InitializeAsync(this);
             await ReplaceCommand.InitializeAsync(this);
             await CreateSnippetCommand.InitializeAsync(this);
+            await ToggleBlurrerCommand.InitializeAsync(this);
         }
 
    

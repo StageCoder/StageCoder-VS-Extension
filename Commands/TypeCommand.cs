@@ -138,7 +138,6 @@ namespace StageCoder
                 {
                     Random rnd = new Random();
 
-
                     EnvDTE80.Events2 events = (EnvDTE80.Events2)dte.Events;
                     textDocKeyEvents = (EnvDTE80.TextDocumentKeyPressEvents)events.get_TextDocumentKeyPressEvents(null);
                     textDocKeyEvents.BeforeKeyPress += TextDocKeyEvents_BeforeKeyPress;
