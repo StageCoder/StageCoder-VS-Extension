@@ -7,7 +7,7 @@
             
 <img class="demo" src="https://github.com/StageCoder/StageCoderWeb/blob/main/StageCoderWeb/StageCoderWeb/wwwroot/StageCoderDemo2.gif?raw=true" />
         
-Steps:  
+<strong>Steps:</strong>  <br/>
 1. Select some code<br />
 2. Right-click and select <strong>Create snippet</strong><br />
 3. Name the snippet<br />
@@ -21,7 +21,7 @@ The snippets are saved in a " Snippets" folder in the solution folder.<br />
 CTRL + TAB + TAB is the default key combination. However, you can remap it in Tools | Options | Keyboard.<br />
 In some cases, you need to remap it to make it work.
 <br /><br />
-There are three commands:<br />
+There are four commands:<br />
 <b>StageCoder.Reloadsnippets</b><br />
 If you copy snippets or manipulate them outside the extension, this will reload the snippets.<br /><br />
 <b>StageCoder.Replacecode</b><br />
@@ -32,7 +32,8 @@ It will enable you to press any button (except TAB) to type one character at a t
 <b>StageCoder.ToggleCodeHighlight</b><br />
 It will toggle the code higlight <br /><br />
 
-<h2>Stream Deck</h2>
+## Stream Deck
+
 While presenting, we can also use a Stream Deck by using the "Visual Studio"-plugin by Nicollas R.<br />
 Adding the commands above can trigger the different commands by pressing the Stream Deck button.<br /><br />
 To configure the type command, do the following:<br />
@@ -46,8 +47,13 @@ To configure the type command, do the following:<br />
 <strong>[clipboard]</strong> - Will take the current text on the clipboard and use that as a snippet.
 
 ## Highlighting code
+
 The second function makes it possible to highlight code by blurring the rest of the code.
-This is perfect for focusing on a specific part of the code while presenting.
-<img class="demo" src="https://github.com/StageCoder/StageCoderWeb/blob/main/StageCoderWeb/StageCoderWeb/wwwroot/Highlight.gif?raw=true" /> 
-        
+This is perfect for focusing on a specific part of the code while presenting.<br /><br />
+<img class="demo" src="https://github.com/StageCoder/StageCoderWeb/blob/main/StageCoderWeb/StageCoderWeb/wwwroot/Highlight.gif?raw=true" /><br /><br />
+Almost everytime I use this function, someone comes up to me and asks what I am using. 
+When toggling the highlighting it will close the currently open file and reopen it.<br />
+This does take a couple of seconds to do, but it is worth it.<br />
+So my recommendation is to have it running through your whole presentation.<br />
+I rarely turn it off, because it helps me to focus as well.
 
