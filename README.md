@@ -28,7 +28,10 @@ If you copy snippets or manipulate them outside the extension, this will reload 
 It will replace the comment with the snippet without typing each character.<br /><br />
 <b>StageCoder.Typecode</b><br />
 It will enable you to press any button (except TAB) to type one character at a time taken from the snippet.
-<br />
+<br /><br />
+<b>StageCoder.ToggleCodeHighlight</b><br />
+It will toggle the code higlight <br /><br />
+
 <h2>Stream Deck</h2>
 While presenting, we can also use a Stream Deck by using the "Visual Studio"-plugin by Nicollas R.<br />
 Adding the commands above can trigger the different commands by pressing the Stream Deck button.<br /><br />
